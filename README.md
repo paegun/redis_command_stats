@@ -41,14 +41,14 @@ REDIS_COMMAND_STATS_COMMAND=clean \
 
 ## Technical Notes
 1. The Monitor and Stats storage Redis instances may be the same or different.
-1.a. Monitoring is aware of the keys and commands it uses, so ignores its commands.
-1.b. Monitoring of several Redis instances, gathering Stats in a single Redis
+  1. Monitoring is aware of the keys and commands it uses, so ignores its commands.
+  1. Monitoring of several Redis instances, gathering Stats in a single Redis
      instance is supported.
 2. A simplified timeseries using Redis is used.
-2.a. A Set keyed 'stats:redis_commands:keys' contains the time windows.
-2.b. A ZSet keyed 'stats:redis_commands:$window' contains the time window, with
+  2. A Set keyed 'stats:redis_commands:keys' contains the time windows.
+  2. A ZSet keyed 'stats:redis_commands:$window' contains the time window, with
      elements keyed on the upper-cased command with the score being the count.
-2.b.i. An Expiry is set on the time window, TTL'ing out after the keep * step
+      2. An Expiry is set on the time window, TTL'ing out after the keep * step
        period has passed.
 
 ## License & Copyright
